@@ -64,7 +64,7 @@ jobs:
       - uses: golangci/golangci-lint-action@v2
         with:
           only-new-issues: true
-          args: --timeout=5m
+          args: --timeout=5m --out-${NO_FUTURE}format colored-line-number
 
   codegen:
     name: codegen
