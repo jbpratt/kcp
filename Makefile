@@ -48,7 +48,7 @@ install:
 .PHONY: install
 
 lint:
-	golangci-lint run ./...
+	golangci-lint run --timeout=5m ./...
 .PHONY: lint
 
 vendor: ## Vendor the dependencies
