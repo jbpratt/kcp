@@ -61,10 +61,11 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: v1.17
-      - uses: golangci/golangci-lint-action@v2
-        with:
-          only-new-issues: true
-          args: --timeout=5m --out-${NO_FUTURE}format colored-line-number
+      - name: Install golangci-lint
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
+      - name: Run golangci-lint
+        run: make lint
 
   codegen:
     name: codegen
